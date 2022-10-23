@@ -1,13 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Flask Demo</title>
+<title>lolStats</title>
 </head>
 <body>
-    <form  method="get">
+    <form action="results" method="get">
         Name: <input type="text" name="name"><br>
+        Games: <input type="number" name="howManyGames"><br>
         <input type="submit">
 </form>
-{{html_page_text}}
+
+name = {{name}} <br>
+in how many games = {{howManyGames}}<br>
+kills = {{allKills  }}<br>
+wins = {{wins }}<br>
+loses = {{loses  }}<br>
+allAssists = {{allAssists  }}<br>
+allDeaths = {{allDeaths  }}<br>
+allQ = {{allQ  }}<br>
+allW = {{allW  }}<br>
+allE = {{allE  }}<br>
+allR = {{allR  }}<br>
+allSpells = {{allSpells  }}<br>
+allGoldEarned = {{allGoldEarned  }}<br>
+allGoldSpent = {{allGoldSpent  }}<br>
+allVisionWardsBoughtInGame = {{allVisionWardsBoughtInGame  }}<br>
+allTimeSpent = {{allTimeSpent  }}<br>
+allDoubleKills = {{allDoubleKills  }}<br>
+allTrippleKills = {{allTrippleKills  }}<br>
+allQuadraKills = {{allQuadraKills  }}<br>
+allPentaKills = {{allPentaKills  }}<br>
+winrate = {{winrate }}<br>
+allSpells = {{allSpells  }}<br>
+allGoldSpentOnWards = {{allGoldSpentOnWards  }}<br>
+secondsSpent = {{secondsSpent  }}<br>
+minutesSpent = {{minutesSpent  }}<br>
+hoursSpent = {{hoursSpent  }}<br>
+
 </body>
 </html>

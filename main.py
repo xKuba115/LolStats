@@ -10,13 +10,16 @@ app = Flask(__name__)
 api = Api(app)
 
 APIKEY = 'RGAPI-6d79be69-95f6-4a0b-9e26-66b20e163eac'
+@app.route("/")
+def hello():
+    return render_template('index.html')
 
-@app.route("/", methods = ['GET'])
+@app.route("/results", methods = ['GET'])
 def data():
         args = request.args
-
         name = args.get('name')
-        howManyGames = 2
+        if args.get('howManyGames') is not None:
+            howManyGames = int(args.get('howManyGames'))
         allKills = 0
         wins =0
         loses = 0
@@ -87,8 +90,8 @@ def data():
         allSpells = allQ + allW + allE + allR
         allGoldSpentOnWards = allVisionWardsBoughtInGame *75
         secondsSpent = allTimeSpent%60
-        minutesSpent = math.floor(allTimeSpent/60)
-        hoursSpent = math.floor(minutesSpent/60)
+        hoursSpent = math.floor(allTimeSpent/3600)
+        minutesSpent = math.floor(allTimeSpent/60 - hoursSpent *60)        
         allabilityUsed = allQ+allW+allE+allR
         data = {
             'name': name,
@@ -120,11 +123,61 @@ def data():
         }
 
         if name is not None:
-            return render_template('index.html',html_page_text=data)
+            return render_template('index.html',
+            name= name,
+            howManyGames = howManyGames,
+            allKills = allKills,
+            wins =wins,
+            loses = loses,
+            allAssists = allAssists,
+            allDeaths = allDeaths,
+            allQ = allQ,
+            allW = allW,
+            allE = allE,
+            allR = allR,
+            allGoldEarned = allGoldEarned,
+            allGoldSpent = allGoldSpent,
+            allVisionWardsBoughtInGame = allVisionWardsBoughtInGame,
+            allTimeSpent = allTimeSpent,
+            allDoubleKills = allDoubleKills,
+            allTrippleKills = allTrippleKills,
+            allQuadraKills = allQuadraKills,
+            allPentaKills = allPentaKills,
+            winrate = winrate,
+            allSpells= allSpells,
+            allGoldSpentOnWards=allGoldSpentOnWards,
+            secondsSpent= secondsSpent,
+            minutesSpent= minutesSpent,
+            hoursSpent= hoursSpent)
         else:
-            return render_template('index.html',html_page_text=' ')
+            return render_template('index.html',
+            name= ' ',
+            howManyGames = ' ',
+            allKills = ' ',
+            wins =' ',
+            loses = ' ',
+            allAssists = ' ',
+            allDeaths = ' ',
+            allQ = ' ',
+            allW = ' ',
+            allE = ' ',
+            allR = ' ',
+            allGoldEarned = ' ',
+            allGoldSpent = ' ',
+            allVisionWardsBoughtInGame = ' ',
+            allTimeSpent = ' ',
+            allDoubleKills = ' ',
+            allTrippleKills = ' ',
+            allQuadraKills = ' ',
+            allPentaKills = ' ',
+            winrate = ' ',
+            allSpells= ' ',
+            allGoldSpentOnWards=' ',
+            secondsSpent= ' ',
+            minutesSpent= ' ',
+            hoursSpent= ' ')
     
 
 if __name__ == '__main__':
-    app.run()  # run our Flask app
+    app.run()  
 
