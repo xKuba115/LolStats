@@ -6,7 +6,7 @@ from flask_restful import Resource, Api, reqparse
 import pandas as pd
 import ast
 import os
-APIKEY = 'RGAPI-0cf63080-aa93-483e-92af-3436ebc4fc46'
+APIKEY = 'RGAPI-0cf63080-aa93-483e-92af-3436ebc4fc46' #thats not a valid key :)
 def GetData():
         serv = 'eun1'
         region = 'europe'
